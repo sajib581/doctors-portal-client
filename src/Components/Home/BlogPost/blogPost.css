@@ -1,0 +1,25 @@
+.blogs .card-header{
+    background-color : transparent ;
+    border: 0;
+}
+
+.blogs .card:hover{
+    background: linear-gradient(75deg, #19D3AE,#0fcfec);
+    color: white;   
+    transition:  .1s  all ease-in-out !important; 
+}
+
+.blogs .card:hover h6,.blogs .card:hover p {
+    color: white !important ;
+}
+
+.blogs .card:hover .card-body{
+    background-image: url(../../../images/quote.png);
+    background-repeat: no-repeat;
+    background-position: right top ;
+    background-size: 60%;
+}
+
+.blogs .card:hover img{
+    display: none;
+}
