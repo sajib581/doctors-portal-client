@@ -1,0 +1,40 @@
+.inputs{
+    border: 1px solid gray;
+    /* min-height: 370px; */
+    height:  auto;
+    width: 310px;
+    padding : 10px 20px ;
+}
+.toggel{
+    color: rgb(34, 129, 238) ;
+    cursor: pointer;
+}
+input{
+    border-bottom: 1px solid black;
+    margin-bottom: 5px;
+}
+.button{
+    border: none;
+    padding:5px 0 ;
+    margin-top: 10px !important;
+    padding-bottom: 5px !important;
+    margin-bottom: 10px !important;
+}
+.forms{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.google,.facebook{
+    border: 1px solid black;
+    margin-bottom: 5px;
+    border-radius:40px ;
+    padding: 5px 0px ;
+    cursor: pointer;
+}
+.icon img{
+    width:30px ;
+    padding: 0px;
+}
