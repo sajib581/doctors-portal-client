@@ -1,14 +1,11 @@
 import React, { useContext, useState } from 'react';
 import loginBg from '../../../images/login-bg.png'
 import './Login.css'
-import firebase from "firebase/app";
-import "firebase/auth";
-import firebaseConfig from './firebase.config';
-import { UserContext } from '../../../App';
 
-if (firebase.apps.length === 0) {
-    firebase.initializeApp(firebaseConfig); //it should be initialised outside the component
-}
+import { UserContext } from '../../../App';
+import { fbSignInHandeler, forgatePasswordHandeler, githubSignInHandeler, googleSignInHandeler, logInWithEmailAndPassword, signUpWithEmailAndPassword, yahooSignInHandeler } from './LoginManager';
+
+
 
 const Login = () => {
     const [forgatePassword, setForgatePassword] = useState(false)
@@ -16,11 +13,6 @@ const Login = () => {
     const [newUser, setNewUser] = useState(true)
 
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
-
-    const googleProvider = new firebase.auth.GoogleAuthProvider();
-    const fbProvider = new firebase.auth.FacebookAuthProvider();
-    const githubProvider = new firebase.auth.GithubAuthProvider();
-    const yahooProvider = new firebase.auth.OAuthProvider('yahoo.com');
 
     const [user, setUser] = useState({
         isLoggedIn: false,
@@ -39,83 +31,38 @@ const Login = () => {
     }
 
     const handelGoogleSignIn = () => {
-        firebase.auth()
-            .signInWithPopup(googleProvider)
-            .then((result) => {
-                const { displayName, email, photoURL } = result.user
-                const signedInUser = {
-                    isLoggedIn: true,
-                    name: displayName,
-                    email,
-                    photo: photoURL
-                }
-                setLoggedInUser(signedInUser)
-                setUser(signedInUser)
-
-            }).catch((error) => {
-                var errorMessage = error.message;
-                console.log(errorMessage);
-            });
+        googleSignInHandeler()
+            .then(res => {
+                setLoggedInUser(res)
+                setUser(res)
+            })
     }
 
+
     const handelFbSignIn = () => {
-        firebase.auth().signInWithPopup(fbProvider)
-            .then((result) => {
-                const { displayName, email, photoURL } = result.user
-                const signedInUser = {
-                    isLoggedIn: true,
-                    name: displayName,
-                    email,
-                    photo: photoURL
-                }
-                setLoggedInUser(signedInUser)
-                setUser(signedInUser)
+        fbSignInHandeler()
+            .then(res => {
+                setLoggedInUser(res)
+                setUser(res)
             })
-            .catch((error) => {
-                var errorMessage = error.message;
-                var email = error.email;
-                console.log(errorMessage);
-                console.log(email);
-            });
     }
 
     const handelGithubSignIn = () => {
-        firebase
-            .auth()
-            .signInWithPopup(githubProvider)
-            .then((result) => {
-                const { displayName, email, photoURL } = result.user
-                const signedInUser = {
-                    isLoggedIn: true,
-                    name: displayName,
-                    email,
-                    photo: photoURL
-                }
-                setLoggedInUser(signedInUser)
-                setUser(signedInUser)
-            }).catch((error) => {
-                var errorMessage = error.message;
-                console.log(errorMessage);
-            });
+        githubSignInHandeler()
+            .then(res => {
+                setLoggedInUser(res)
+                setUser(res)
+            })
     }
 
     const handelYahooSignIn = () => {
-        firebase.auth().signInWithPopup(yahooProvider)
-            .then((result) => {                
-                const { displayName, email, photoURL } = result.user
-                const signedInUser = {
-                    isLoggedIn: true,
-                    name: displayName,
-                    email,
-                    photo: photoURL
-                }
-                setLoggedInUser(signedInUser)
-                setUser(signedInUser)
+        yahooSignInHandeler()
+            .then(res => {
+                setLoggedInUser(res)
+                setUser(res)
             })
-            .catch((error) => {
-                console.log("Yahoo Authentication failed ",error);
-            });
     }
+
     // Authorization
     const blurHandeler = (e) => {
         console.log(e.target.name)
@@ -155,55 +102,24 @@ const Login = () => {
     }
 
     const submitHandeler = (e) => {
-        if (newUser && user.email && user.password) {
-            firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
-                .then((result) => {  
-                    const { displayName, email, photoURL } = result.user
-                    const signedInUser = {
-                    isLoggedIn: true,
-                    name: displayName,
-                    email,
-                    photo: photoURL
-                }
-                setLoggedInUser(signedInUser)
-                setUser(signedInUser)
-                updateUserInfo(user.name)
-                setNewUser(false)
+        if (newUser && user.email && user.password && user.name) {
+            signUpWithEmailAndPassword(user.email, user.password, user.name)
+                .then(res => {
+                    setLoggedInUser(res)
+                    setUser(res)
+                    setNewUser(false)
                 })
-                .catch((error) => {
-                    var errorMessage = error.message;
-                    const newUserInfo = { ...user }
-                    newUserInfo.error = errorMessage
-                    setUser(newUserInfo)
-                    console.log("Signup failed");
-                });
+
         }
         else if (!newUser && user.email && user.password && !forgatePassword) {
-            firebase.auth().signInWithEmailAndPassword(user.email, user.password)
-                .then((result) => {                    
-                    const { displayName, email, photoURL } = result.user
-                    const signedInUser = {
-                    isLoggedIn: true,
-                    name: displayName,
-                    email,
-                    photo: photoURL
-                }
-                setLoggedInUser(signedInUser)
-                setUser(signedInUser)
-                console.log(loggedInUser);
+            logInWithEmailAndPassword(user.email, user.password)
+                .then(res => {
+                    setLoggedInUser(res)
+                    setUser(res)
                 })
-                .catch(error => {
-                    var errorMessage = error.message;
-                    const newUserInfo = { ...user }
-                    newUserInfo.error = errorMessage
-                    setUser(newUserInfo)
-                    console.log("Login Error: " + errorMessage);
-                });
         }
         else if (!newUser && user.email && forgatePassword) {
-            console.log(user);
-
-            // resetPassword(user.email)
+            forgatePasswordHandeler(user.email)
         }
         else {
             // showError("result","Invalid Credential")
@@ -211,50 +127,46 @@ const Login = () => {
         e.preventDefault();
     }
 
-    const updateUserInfo = (name) => {
-        console.log(name);
-        const user = firebase.auth().currentUser;
-        user.updateProfile({
-            displayName: name
-        })
-            .then(() => {
-                console.log("user name updated successfully");
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-    }
+
     console.log(loggedInUser);
     return (
         <div className="login-page container">
+            <div class="alert alert-success">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Success!</strong> Bootstrap applied to alert.
+    </div>
             <div className="row align-items-center" style={{ height: "100vh" }}>
                 <div className="col-md-6 shadow pb-5">
                     <div className="row pb-4">
-                        <div style={{ cursor: "pointer" }} onClick={() => setNewUser(true)} className={`col-md-6 p-3 text-center ${newUser ? 'shadow' : ""}`}>
+                        <div style={{ cursor: "pointer" }} onClick={() => { setNewUser(true); setForgatePassword(false) }} className={`col-md-6 p-3 text-center ${newUser ? 'shadow' : ""}`}>
                             <h4>Signup</h4>
                         </div>
                         <div style={{ cursor: "pointer" }} onClick={() => setNewUser(false)} className={`col-md-6 p-3 text-center ${!newUser ? 'shadow' : ""}`}>
                             <h4>Login</h4>
                         </div>
                     </div>
+                    
                     <form className="px-5" onSubmit={submitHandeler}>
                         {
-                            newUser && <div className="form-group">
+                            (newUser && !forgatePassword) && <div className="form-group">
                                 <input onBlur={blurHandeler} required type="text" name="name" placeholder="First & Last Name" className="py-4 form-control" />
                             </div>
                         }
                         <div className="form-group">
                             <input onBlur={blurHandeler} required type="email" name="email" placeholder="Email" className="form-control py-4" />
                         </div>
-                        <div className="form-group">
-                            <input onBlur={blurHandeler} required type="password" name="password" placeholder="Your Password" className="py-4 form-control" />
-                        </div>
-                        {!newUser && <div className="form-group">
-                            <label htmlFor="" className="text-danger mt-4">Forgot your password?</label>
+                        {
+                            !forgatePassword && <div className="form-group">
+                                <input onBlur={blurHandeler} required type="password" name="password" placeholder="Your Password" className="py-4 form-control" />
+                            </div>
+                        }
+                        {!newUser && <div className="form-group" >
+                            <label style={{ cursor: "pointer" }} onClick={() => setForgatePassword(!forgatePassword)} htmlFor="" className="text-danger mt-4">{!forgatePassword ? 'Forgot Password' : 'Back to Log In'}</label>
                         </div>}
                         <div className="from-group mt-3 text-right">
                             {
-                                newUser ? <input type="Submit" className="btn btn-brand" value= "Create A New Account"  /> : <input type="Submit" className="btn btn-brand" value="Sign In" />
+                                !forgatePassword ? <input type="Submit" className="btn btn-brand" value={newUser ? `Create A New Account` : `Sign In`} /> :
+                                    <input type="Submit" className="btn btn-brand" value="Request For Verification" />
                             }
                         </div>
 
@@ -275,7 +187,7 @@ const Login = () => {
                             <img onClick={handelGoogleSignIn} style={{ width: '50px', cursor: "pointer" }} src="https://hrcdn.net/community-frontend/assets/google-colored-20b8216731.svg" alt="" />
                             <img onClick={handelGithubSignIn} style={{ width: '50px', cursor: "pointer" }} src="https://hrcdn.net/community-frontend/assets/github-colored-1db995054b.svg" alt="" />
                             <img onClick={handelYahooSignIn} style={{ width: '80px', cursor: "pointer" }} src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Yahoo%21_icon.svg/1200px-Yahoo%21_icon.svg.png" alt="" />
-                            
+
                         </div>
                     </form>
                 </div>
