@@ -25,8 +25,10 @@ export const googleSignInHandeler = () => {
 
 
         }).catch((error) => {
-            const errorMessage = error.message;
-            console.log(errorMessage);
+            const newUserInfo = {}
+            newUserInfo.error = error.message;
+            newUserInfo.success = false;
+            return newUserInfo
         });
 }
 
@@ -43,27 +45,28 @@ export const fbSignInHandeler = () => {
             return signedInUser
         })
         .catch((error) => {
-            const errorMessage = error.message;
-            const email = error.email;
-            console.log(errorMessage);
-            console.log(email);
+            const newUserInfo = {}
+            newUserInfo.error = error.message;
+            newUserInfo.success = false;
+            return newUserInfo
         });
 }
 
 export const githubSignInHandeler = () => {
-    return firebase.auth().signInWithPopup(githubProvider)
+    return firebase
+        .auth()
+        .signInWithPopup(githubProvider)
         .then((result) => {
-            const { displayName, email, photoURL } = result.user
-            const signedInUser = {
-                isLoggedIn: true,
-                name: displayName,
-                email,
-                photo: photoURL
-            }
-            return signedInUser
+            var user = result.user;
+            console.log("github success");
+            return user
+            
         }).catch((error) => {
-            const errorMessage = error.message;
-            console.log(errorMessage);
+            const newUserInfo = {}
+            newUserInfo.error = error.message;
+            newUserInfo.success = false;
+            console.log("github failed");
+            return newUserInfo
         });
 }
 
@@ -80,7 +83,10 @@ export const yahooSignInHandeler = () => {
             return signedInUser
         })
         .catch((error) => {
-            console.log("Yahoo Authentication failed ", error);
+            const newUserInfo = {}
+            newUserInfo.error = error.message;
+            newUserInfo.success = false;
+            return newUserInfo
         });
 }
 
@@ -117,7 +123,7 @@ export const signUpWithEmailAndPassword = (email, password, name) => {
             const errorMessage = error.message;
             newUserInfo.error = errorMessage
             console.log("Signup failed");
-            return newUserInfo;            
+            return newUserInfo;
         });
 }
 

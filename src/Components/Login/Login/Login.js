@@ -4,6 +4,7 @@ import './Login.css'
 
 import { UserContext } from '../../../App';
 import { fbSignInHandeler, forgatePasswordHandeler, githubSignInHandeler, googleSignInHandeler, logInWithEmailAndPassword, signUpWithEmailAndPassword, yahooSignInHandeler } from './LoginManager';
+import { useHistory, useLocation } from 'react-router-dom';
 
 
 
@@ -13,6 +14,11 @@ const Login = () => {
     const [newUser, setNewUser] = useState(true)
 
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+
+    let history = useHistory();
+    let location = useLocation();
+
+    let { from } = location.state || { from: { pathname: "/" } };
 
     const [user, setUser] = useState({
         isLoggedIn: false,
@@ -35,6 +41,7 @@ const Login = () => {
             .then(res => {
                 setLoggedInUser(res)
                 setUser(res)
+                history.replace(from);
             })
     }
 
@@ -44,6 +51,7 @@ const Login = () => {
             .then(res => {
                 setLoggedInUser(res)
                 setUser(res)
+                history.replace(from);
             })
     }
 
@@ -52,6 +60,8 @@ const Login = () => {
             .then(res => {
                 setLoggedInUser(res)
                 setUser(res)
+                console.log(res);
+                history.replace(from);
             })
     }
 
@@ -60,6 +70,7 @@ const Login = () => {
             .then(res => {
                 setLoggedInUser(res)
                 setUser(res)
+                history.replace(from);
             })
     }
 
@@ -116,6 +127,7 @@ const Login = () => {
                 .then(res => {
                     setLoggedInUser(res)
                     setUser(res)
+                    history.replace(from);
                 })
         }
         else if (!newUser && user.email && forgatePassword) {
@@ -130,11 +142,7 @@ const Login = () => {
 
     console.log(loggedInUser);
     return (
-        <div className="login-page container">
-            <div class="alert alert-success">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <strong>Success!</strong> Bootstrap applied to alert.
-    </div>
+        <div className="login-page container">            
             <div className="row align-items-center" style={{ height: "100vh" }}>
                 <div className="col-md-6 shadow pb-5">
                     <div className="row pb-4">
@@ -180,7 +188,7 @@ const Login = () => {
                             <div className="col-md-4">
                                 <hr style={{ border: '1px solid black' }} />
                             </div>
-                        </div>
+                        </div>                        
 
                         <div className="d-flex justify-content-between">
                             <img onClick={handelFbSignIn} style={{ width: '50px', cursor: "pointer" }} src="https://hrcdn.net/community-frontend/assets/facebook-colored-af4249157d.svg" alt="" />
