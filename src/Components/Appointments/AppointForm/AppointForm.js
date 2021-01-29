@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import { useForm } from "react-hook-form";
+import moment from 'moment';
 
 const AppointForm = ({ modalIsOpen, openModal, closeModal, appointmentTo, date }) => {
   const customStyles = {
@@ -20,8 +21,28 @@ const AppointForm = ({ modalIsOpen, openModal, closeModal, appointmentTo, date }
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = data => {
-    console.log(data);
-    closeModal()
+
+    const m = moment(date, moment.ISO_8601)
+    const parsingDate = m.format("L")
+
+    data.service = appointmentTo;
+    data.date = parsingDate
+    data.created = new Date()
+
+    console.log(parsingDate);
+
+    fetch('http://localhost:5000/addAppointments', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json())
+      .then(success => {
+        if (success) {
+          closeModal()
+          alert('Appointment Created Successfully');
+        }
+      })
   }
 
   return (
@@ -75,7 +96,7 @@ const AppointForm = ({ modalIsOpen, openModal, closeModal, appointmentTo, date }
               {errors.weight && <span className="text-danger">This field is required</span>}
             </div>
           </div>
-          
+
           <div className="text-right">
             <input className="btn btn-brand" type="submit" />
           </div>
