@@ -5,6 +5,7 @@ import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 import moment from 'moment';
 import Statistics from '../Statistics/Statistics';
+import DashboardMain from '../DashboardMain/DashboardMain';
 
 const containerStyle = {
     backgroundColor: "#F4FDFB",
@@ -28,7 +29,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         fetch('http://localhost:5000/appointmentsByDate', {
-            method: 'POST',
+            method: 'POST', // because we also can send date to server by body with post method
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ date: selectedDate })
         })
@@ -42,8 +43,9 @@ const Dashboard = () => {
         <div className="container-fluid row " >
             <Sidebar></Sidebar>
             <div className="col-md-10 p-4 pr-5" style={{ position: "absolute", right: 0, backgroundColor: "#F4FDFB", minHeight: "100vh" }}>
-                <h5 className="">Patients</h5>
+                <h5 className="mb-4">Dashboard</h5>
                 <Statistics></Statistics>
+                <DashboardMain></DashboardMain>
             </div>
         </div>
     );

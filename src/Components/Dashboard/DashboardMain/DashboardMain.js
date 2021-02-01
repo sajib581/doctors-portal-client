@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import AppointmentDataTable from '../AppointmentDataTable/AppointmentDataTable';
+import DashboardDataTable from '../DashboardDataTable/DashboardDataTable';
 
-const DashboardMain = () => {
+const DashboardMain = () => {    
+    
     return (
-        <div>
-            
-        </div>
+        <section>
+            <div className="p-4" style={{  backgroundColor: "#F4FDFB", minHeight: "100vh" }}>
+                <DashboardDataTable ></DashboardDataTable>
+            </div>
+        </section>
     );
 };
 

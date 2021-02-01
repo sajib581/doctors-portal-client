@@ -18,9 +18,8 @@ const AppointmentDataTable = ({appointments}) => {
             </thead>
             <tbody>
                 {
-                  appointments.map((appointment, index) => 
-                        
-                    <tr>
+                  appointments.map((appointment, index) =>                         
+                    <tr key={index} >
                         <td>{index + 1}</td>
                         <td>{appointment.name}</td>
                         <td>{appointment.gender}</td>

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,11 +15,21 @@ import Login from "./Components/Login/Login/Login";
 import Test from "./Components/Login/Login/Test";
 import PrivateRoute from "./Components/Login/PrivateRoute/PrivateRoute";
 export const UserContext = createContext();
+export const AppointmentContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
+  const [appointments, setAppointments] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/appointments')
+        .then(res => res.json())
+        .then(data => setAppointments(data))
+}, [appointments])
+
   return (
-    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+    <AppointmentContext.Provider value={[appointments, setAppointments]}>
+      <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>
         <Switch>
           <Route exact path="/">
@@ -52,6 +62,7 @@ function App() {
         </Switch>
       </Router>
     </UserContext.Provider>
+    </AppointmentContext.Provider>
   );
 }
 
