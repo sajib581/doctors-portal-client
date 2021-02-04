@@ -21,13 +21,14 @@ const AppointForm = ({ modalIsOpen, openModal, closeModal, appointmentTo, date }
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = data => {
-
+    
     const m = moment(date, moment.ISO_8601)
     const parsingDate = m.format("L")
 
     data.service = appointmentTo;
     data.date = parsingDate
     data.created = new Date()
+    data.status = "Pending"
 
     console.log(parsingDate);
 
