@@ -6,6 +6,9 @@ import moment from 'moment';
 
 const AppointForm = ({ modalIsOpen, openModal, closeModal, appointmentTo, date }) => {
   const customStyles = {
+    overlay: {
+      background: "rgba(130,125,125,0.75)"
+    },
     content: {
       top: '50%',
       left: '50%',
@@ -29,8 +32,7 @@ const AppointForm = ({ modalIsOpen, openModal, closeModal, appointmentTo, date }
     data.date = parsingDate
     data.created = new Date()
     data.status = "Pending"
-
-    console.log(parsingDate);
+    data.Prescription = []
 
     fetch('http://localhost:5000/addAppointments', {
       method: 'POST',

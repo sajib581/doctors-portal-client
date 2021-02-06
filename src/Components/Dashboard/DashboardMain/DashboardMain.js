@@ -6,7 +6,7 @@ const DashboardMain = () => {
     
     return (
         <section>
-            <div className="p-4" style={{  backgroundColor: "#F4FDFB", minHeight: "100vh" }}>
+            <div style={{  backgroundColor: "#F4FDFB", minHeight: "100vh" }}>
                 <DashboardDataTable ></DashboardDataTable>
             </div>
         </section>
