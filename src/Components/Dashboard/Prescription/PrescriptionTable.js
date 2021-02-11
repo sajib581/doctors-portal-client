@@ -1,7 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { AppointmentContext } from '../../../App';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import PresscriptionModal from '../DashboardDataTable/PresscriptionModal';
 
 const PrescriptionTable = () => {

@@ -2,7 +2,6 @@ import React from 'react';
 
 const Testimonial = (props) => {
     const { quote, name, from, img } = props.data
-    console.log(quote, name, from);
     return (
         <div class="card">
             <div class="card-body">

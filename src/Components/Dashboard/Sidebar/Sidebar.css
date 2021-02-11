@@ -4,6 +4,7 @@
 }
 .sidebar li{
     margin-bottom: 2em;
+    list-style-type: none;
 }
 .sidebar li:hover span{
     

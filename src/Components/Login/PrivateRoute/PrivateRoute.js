@@ -9,15 +9,22 @@ import {
     Redirect,
     useHistory,
     useLocation
-  } from "react-router-dom";
+} from "react-router-dom";
 
-const PrivateRoute = ({ children, ...rest }) => {    
+const PrivateRoute = ({ children, ...rest }) => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+
+    // var retrievedObject = localStorage.getItem('response');
+    // const userData = JSON.parse(retrievedObject)    
+
+    const email = sessionStorage.getItem('email');
+    const name = sessionStorage.getItem('name');
+
     return (
         <Route
             {...rest}
             render={({ location }) =>
-            loggedInUser.name || loggedInUser.email ? (
+                name || email ? (
                     children
                 ) : (
                         <Redirect

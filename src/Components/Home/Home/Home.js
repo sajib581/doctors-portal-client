@@ -3,6 +3,7 @@ import Footer from '../../Shared/Footer/Footer/Footer';
 import Appointment from '../Appointment/Appointment';
 import Blogs from '../Blogs/Blogs';
 import Contact from '../Contact/Contact';
+import Doctors from '../Doctors/Doctors';
 import FeaturedService from '../FeaturedService/FeaturedService';
 import Header from '../Header/Header';
 import Services from '../Services/Services';
@@ -17,6 +18,7 @@ const Home = () => {
             <Appointment></Appointment>
             <Testimonials></Testimonials>
             <Blogs></Blogs>
+            <Doctors></Doctors>
             <Contact></Contact>
             <Footer></Footer>
         </div>

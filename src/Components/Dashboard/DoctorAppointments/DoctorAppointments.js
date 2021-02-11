@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import AppointmentsByDate from '../AppointmentsByDate/AppointmentsByDate';
 import Sidebar from '../Sidebar/Sidebar';
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 import moment from 'moment';
 import './Calender.css'
+import { UserContext } from '../../../App';
 
 const containerStyle = {
     backgroundColor: "#F4FDFB",
     height: "100vh"
 }
 const DoctorAppointments = () => {
+    const [loggedInUser, setLoggedInUser] = useContext( UserContext)
+
     const parsingDate = () => {
         const m = moment(new Date(), moment.ISO_8601)
         const parsingDate = m.format("L")
@@ -26,11 +29,12 @@ const DoctorAppointments = () => {
         setSelectedDate(parsingDate);
     }
 
+    const email = sessionStorage.getItem("email")
     useEffect(() => {
         fetch('http://localhost:5000/appointmentsByDate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ date: selectedDate })
+            body: JSON.stringify({ date: selectedDate, email: email})
         })
             .then(res => res.json())
             .then(data => {

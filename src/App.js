@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 import Appointments from "./Components/Appointments/Appointments/Appointments";
+import AddDoctor from "./Components/Dashboard/AddDoctor/AddDoctor";
 import AllPatient from "./Components/Dashboard/AllPatient/AllPatient";
 import Dashboard from "./Components/Dashboard/Dashboard/Dashboard";
 import DoctorAppointments from "./Components/Dashboard/DoctorAppointments/DoctorAppointments";
@@ -38,21 +39,24 @@ function App() {
           <Route path="/appointment">
             <Appointments></Appointments>
           </Route>
-          <Route path="/doctor/dashboard">
-            <Dashboard></Dashboard>
-          </Route>
-          <Route path="/doctor/appointment">
-            <DoctorAppointments></DoctorAppointments>
-          </Route>
-          <Route path="/doctor/prescriptions">
+          <PrivateRoute path="/doctor/dashboard">
+          <DoctorAppointments></DoctorAppointments>            
+          </PrivateRoute>
+          <PrivateRoute path="/doctor/appointment">
+          <Dashboard></Dashboard>
+          </PrivateRoute>
+          <PrivateRoute path="/doctor/prescriptions">
             <Prescription></Prescription>
-          </Route>
+          </PrivateRoute>
           <Route path="/login">
             <Login></Login>
           </Route>
-          <Route path="/doctor/allPatient">
+          <PrivateRoute path="/doctor/allPatient">
             <AllPatient></AllPatient>
-          </Route>
+          </PrivateRoute>
+          <PrivateRoute path="/addDoctor">
+            <AddDoctor></AddDoctor>
+          </PrivateRoute>
           <PrivateRoute path="/test">
             <Test></Test>
           </PrivateRoute>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -12,22 +13,23 @@ const Navbar = () => {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link mr-5 active" aria-current="page" href="#">Home</a>
+                {/* <a class="nav-link mr-5 active" aria-current="page" href="#">Home</a> */}
+                <Link to="/" className="nav-link mr-5"> <span>Home</span></Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link mr-5" href="#">About</a>
+                <Link to="" className="nav-link mr-5"> <span>About</span></Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link mr-5" href="#">Dental Services</a>
+                <Link to="/doctor/dashboard" className="nav-link mr-5"> <span>Dashboard</span></Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link mr-5 text-white" href="#">Reviews</a>
+                <Link to="" className="nav-link mr-5 text-white"> <span>Reviews</span></Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link mr-5 text-white" href="#">Blogs</a>
+                <Link to="" className="nav-link mr-5 text-white"> <span>Blogs</span></Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link mr-5 text-white" href="#">Contact Us</a>
+                <Link to="" className="nav-link mr-5 text-white"> <span>Contact Us</span></Link>
               </li>
             </ul>
           </div>

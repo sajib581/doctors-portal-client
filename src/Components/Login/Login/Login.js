@@ -36,41 +36,43 @@ const Login = () => {
         setError(newError)
     }
 
+    const handelResponse = (res) => {
+        setLoggedInUser(res)
+        setUser(res)
+
+        // localStorage.setItem('response', JSON.stringify(res));
+
+        sessionStorage.setItem('name', res.name)
+        sessionStorage.setItem('email', res.email)
+        history.replace(from);
+
+    }
+
     const handelGoogleSignIn = () => {
         googleSignInHandeler()
             .then(res => {
-                setLoggedInUser(res)
-                setUser(res)
-                history.replace(from);
+                handelResponse(res)
             })
     }
-
 
     const handelFbSignIn = () => {
         fbSignInHandeler()
             .then(res => {
-                setLoggedInUser(res)
-                setUser(res)
-                history.replace(from);
+                handelResponse(res)
             })
     }
 
     const handelGithubSignIn = () => {
         githubSignInHandeler()
             .then(res => {
-                setLoggedInUser(res)
-                setUser(res)
-                console.log(res);
-                history.replace(from);
+                handelResponse(res)
             })
     }
 
     const handelYahooSignIn = () => {
         yahooSignInHandeler()
             .then(res => {
-                setLoggedInUser(res)
-                setUser(res)
-                history.replace(from);
+                handelResponse(res)
             })
     }
 
@@ -139,10 +141,8 @@ const Login = () => {
         e.preventDefault();
     }
 
-
-    console.log(loggedInUser);
     return (
-        <div className="login-page container">            
+        <div className="login-page container">
             <div className="row align-items-center" style={{ height: "100vh" }}>
                 <div className="col-md-6 shadow pb-5">
                     <div className="row pb-4">
@@ -153,7 +153,7 @@ const Login = () => {
                             <h4>Login</h4>
                         </div>
                     </div>
-                    
+
                     <form className="px-5" onSubmit={submitHandeler}>
                         {
                             (newUser && !forgatePassword) && <div className="form-group">
@@ -188,7 +188,7 @@ const Login = () => {
                             <div className="col-md-4">
                                 <hr style={{ border: '1px solid black' }} />
                             </div>
-                        </div>                        
+                        </div>
 
                         <div className="d-flex justify-content-between">
                             <img onClick={handelFbSignIn} style={{ width: '50px', cursor: "pointer" }} src="https://hrcdn.net/community-frontend/assets/facebook-colored-af4249157d.svg" alt="" />
