@@ -8,7 +8,7 @@ const Doctors = () => {
             .then(data => setDoctors(data))
     }, [])
     return (
-        <section className="doctors">
+        <section className="doctors" id="Doctors">
             <div className="container">
                 <h5 className="text-center  text-primary mb-5">Our Doctors</h5>
                 <div className="row">

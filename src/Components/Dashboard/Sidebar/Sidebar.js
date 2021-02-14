@@ -6,27 +6,12 @@ import { faCog, faSignOutAlt, faCalendar, faGripHorizontal, faUsers, faUserPlus 
 import { faFileAlt } from '@fortawesome/free-regular-svg-icons'
 import { useContext } from 'react';
 import { UserContext } from '../../../App'
+import { AppointmentContext } from '../../../App';
 
 const Sidebar = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
-    const [isDoctor, setIsDoctor] = useState(false)
+    const [, , isDoctor, setIsDoctor] = useContext(AppointmentContext)
 
-    useEffect(() => {
-        console.log("hitted" );
-        const email = sessionStorage.getItem("email")
-        console.log(email);
-        
-        fetch("http://localhost:5000/isDoctor", {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: email })
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                setIsDoctor(data)
-            })
-    },[])
     const logOutHandeler = () => {
         sessionStorage.removeItem('name');
         sessionStorage.removeItem('email');

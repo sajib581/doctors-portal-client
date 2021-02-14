@@ -40,7 +40,7 @@ const Login = () => {
         setLoggedInUser(res)
         setUser(res)
 
-        // localStorage.setItem('response', JSON.stringify(res));
+        localStorage.setItem('response', JSON.stringify(res));
 
         sessionStorage.setItem('name', res.name)
         sessionStorage.setItem('email', res.email)
@@ -78,8 +78,6 @@ const Login = () => {
 
     // Authorization
     const blurHandeler = (e) => {
-        console.log(e.target.name)
-        console.log(e.target.value)
         let isFieldValid = true
         if (e.target.name === 'name') {
             isFieldValid = e.target.value.length > 3

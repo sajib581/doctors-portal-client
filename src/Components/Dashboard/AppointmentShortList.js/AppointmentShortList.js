@@ -2,7 +2,7 @@ import React from 'react';
 
 const AppointmentShortList = ({appointments}) => {
     return (
-        <table className="table table-borderless">
+        <table key={appointments._id} className="table table-borderless">
             <thead>
                 <tr>
                 <th className="text-secondary" scope="col">Name</th>
@@ -14,7 +14,7 @@ const AppointmentShortList = ({appointments}) => {
                 {
                   appointments.map((appointment, index) => 
                         
-                    <tr>
+                    <tr key={index}>
                         <td>{appointment.name}</td>
                         <td>{appointment.phone}</td>
                         <td>{appointment.email}</td>

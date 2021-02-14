@@ -9,7 +9,6 @@ const Appointments = () => {
     const handelChange = date =>{
         setSelectedDate(date)
     }
-    console.log(selectedDate);
     return (
         <div> 
             <Navbar></Navbar>

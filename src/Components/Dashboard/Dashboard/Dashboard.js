@@ -7,16 +7,7 @@ import DashboardMain from '../DashboardMain/DashboardMain';
 import { UserContext } from '../../../App';
 
 const Dashboard = () => {
-    const parsingDate = () => {
-        const m = moment(new Date(), moment.ISO_8601)
-        const parsingDate = m.format("L")
-        return parsingDate;
-    }
-
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
-    const [selectedDate, setSelectedDate] = useState(parsingDate());
-    const [appointments, setAppointments] = useState([])
-
+    
     return (
         <div className="container-fluid row " >
             <Sidebar></Sidebar>

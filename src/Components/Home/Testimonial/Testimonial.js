@@ -3,11 +3,11 @@ import React from 'react';
 const Testimonial = (props) => {
     const { quote, name, from, img } = props.data
     return (
-        <div class="card">
-            <div class="card-body">
-                <p class="card-text">{quote}</p>
+        <div className="card">
+            <div className="card-body">
+                <p className="card-text">{quote}</p>
             </div>
-            <div class="card-footer pt-4 d-flex ">
+            <div className="card-footer pt-4 d-flex ">
                 <div>
                     <img className="h-75" src={img} alt="" />
                 </div>

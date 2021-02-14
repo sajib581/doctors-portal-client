@@ -2,7 +2,7 @@ import React from 'react';
 
 const AppointmentDataTable = ({appointments}) => {
     return (
-        <section className="p-3 mt-5" style={{backgroundColor: 'white' }}>
+        <section className="p-3 " style={{backgroundColor: 'white' }}>
             <h6 className="text-brand my-3">All Patient</h6>
             <table className="table table-borderless" >
             <thead>

@@ -91,7 +91,6 @@ export const yahooSignInHandeler = () => {
 }
 
 const updateUserInfo = (name) => {
-    console.log(name);
     const user = firebase.auth().currentUser;
     user.updateProfile({
         displayName: name

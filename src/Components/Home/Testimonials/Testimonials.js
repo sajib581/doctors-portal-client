@@ -28,7 +28,7 @@ const testimonialData = [
 
 const Testimonials = () => {
     return (
-        <section>
+        <section id="Testimonial">
             <div className="d-flex justify-content-between mb-5">
                 <div className="ml-5 mt-4 pl-3">
                     <h5 className="text-primary">TESTIMONAL</h5>
@@ -38,7 +38,7 @@ const Testimonials = () => {
                     <img className="w-50" src={quotePic} alt="" />
                 </div>
             </div>
-            <div class="card-deck mx-5">
+            <div className="card-deck mx-5">
                 {
                     testimonialData.map(data => <Testimonial key={data.name} data={data}></Testimonial>)
                 }

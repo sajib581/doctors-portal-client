@@ -71,7 +71,7 @@ const PresscriptionModal = ({ modalIsOpen, setIsOpen, modalData }) => {
                     <form onSubmit={handleSubmit(submitHandeler)} className="form-group d-flex mt-3 row" >
                         <input ref={register({ required: true })} name="medicin" placeholder="Medicine Name" id="medicin" className="form-control col-6 rounded-0"  />
 
-                        <select name="iteretion" ref={register({ required: true })} class="form-control col-3 rounded-0" >
+                        <select name="iteretion" ref={register({ required: true })} className="form-control col-3 rounded-0" >
                             <option>1-1-1</option>
                             <option>1-1-0</option>
                             <option>1-0-1</option>
@@ -86,7 +86,7 @@ const PresscriptionModal = ({ modalIsOpen, setIsOpen, modalData }) => {
                     </form>
                     {/* Table */}
                     <div>
-                        <table class="table table-borderless">
+                        <table className="table table-borderless">
                             <tbody>
                                 {
                                     Prescription && Prescription.map((item, index) =>

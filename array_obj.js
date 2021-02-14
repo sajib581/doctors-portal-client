@@ -50,5 +50,4 @@ array.forEach(item =>{
         myMap.set(item.section, {...item})
     }    
 })
-console.log(myMap);
-console.log(myMap.size);
+

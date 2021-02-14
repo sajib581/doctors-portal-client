@@ -5,7 +5,7 @@ import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 import moment from 'moment';
 import './Calender.css'
-import { UserContext } from '../../../App';
+import { AppointmentContext, UserContext } from '../../../App';
 
 const containerStyle = {
     backgroundColor: "#F4FDFB",
@@ -22,6 +22,21 @@ const DoctorAppointments = () => {
 
     const [selectedDate, setSelectedDate] = useState(parsingDate());
     const [appointments, setAppointments] = useState([])
+    const [, , isDoctor, setIsDoctor] = useContext(AppointmentContext)
+
+    useEffect(() => {
+        const email = sessionStorage.getItem("email")
+    
+        fetch("http://localhost:5000/isDoctor", {
+          method: "POST",
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email })
+        })
+          .then(response => response.json())
+          .then(data => {
+            setIsDoctor(data)
+          })
+      }, [])
 
     const handelChange = date => {
         const m = moment(date, moment.ISO_8601)
@@ -30,11 +45,12 @@ const DoctorAppointments = () => {
     }
 
     const email = sessionStorage.getItem("email")
+    const name = sessionStorage.getItem("name")
     useEffect(() => {
         fetch('http://localhost:5000/appointmentsByDate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ date: selectedDate, email: email})
+            body: JSON.stringify({ date: selectedDate, email: email, name:name})
         })
             .then(res => res.json())
             .then(data => {
