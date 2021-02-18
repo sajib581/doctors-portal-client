@@ -58,6 +58,7 @@ export const githubSignInHandeler = () => {
         .signInWithPopup(githubProvider)
         .then((result) => {
             var user = result.user;
+            user.isLoggedIn = true;
             console.log("github success");
             return user
             

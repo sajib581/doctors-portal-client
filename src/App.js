@@ -36,6 +36,15 @@ function App() {
         setIsDoctor(data)
       })
   }, [])
+  
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem('response'))  
+    if (userData) {
+      setLoggedInUser(userData)
+      console.log(userData);
+    } 
+  }, [loggedInUser?.isLoggedIn])
+  
 
   useEffect(() => {
     fetch('http://localhost:5000/appointments')

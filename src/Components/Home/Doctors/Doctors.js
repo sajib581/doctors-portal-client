@@ -1,28 +1,60 @@
 import React, { useEffect, useState } from 'react';
 import Doctor from '../Doctor/Doctor';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/swiper.scss';
+import 'swiper/components/navigation/navigation.scss';
+import 'swiper/components/pagination/pagination.scss';
+import 'swiper/components/scrollbar/scrollbar.scss';
+
+import 'swiper/swiper.scss';
+import './Doctors.css'
 const Doctors = () => {
+    SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
     const [doctors, setDoctors] = useState([])
     useEffect(() => {
         fetch("http://localhost:5000/doctors")
             .then(response => response.json())
-            .then(data => setDoctors(data))
+            .then(data => {
+                console.log(data.length);
+                setDoctors(data)
+            })
     }, [])
     return (
-        <section className="doctors" id="Doctors">
-            <div className="container">
-                <h5 className="text-center  text-primary mb-5">Our Doctors</h5>
-                <div className="row">
-                    {
-                        doctors.map(doctor => <Doctor
-                            name={doctor.name}
-                            email={doctor.email}
-                            img={doctor.img}
-                        />)
-                    }
-                </div>
+        <div className='mb-5 carousel-container'>
+            <div>
+                <h3 className='text-center text-white mb-3 pb-4 pt-5'>Here are some of <span style={{ color: '#7AB259' }}> our Doctors</span></h3>
             </div>
-        </section>
+            <div className='carousel-slider'>
+                <Swiper
+                    spaceBetween={10}
+                    slidesPerView={3}
+                    navigation
+                    autoplay={{
+                        delay: 2100,
+                        disableOnInteraction: false
+                    }}
+                    loop={true}
+                >
+                    {
+                        doctors.map((doctor, index) => <SwiperSlide key={index}>
+                            <Doctor
+                                name={doctor.name}
+                                email={doctor.email}
+                                img={doctor.img}
+                                index={index}
+                            ></Doctor>
+                        </SwiperSlide>)
+                    }
+                </Swiper>
+            </div>
+        </div>
     );
 };
+
+
 
 export default Doctors;

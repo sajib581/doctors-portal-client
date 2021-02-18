@@ -13,8 +13,7 @@ const Sidebar = () => {
     const [, , isDoctor, setIsDoctor] = useContext(AppointmentContext)
 
     const logOutHandeler = () => {
-        sessionStorage.removeItem('name');
-        sessionStorage.removeItem('email');
+        setLoggedInUser({isLoggedIn:false})
         localStorage.removeItem('response');
     }
     return (

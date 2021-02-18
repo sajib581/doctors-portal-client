@@ -6,8 +6,6 @@ import { UserContext } from '../../../App';
 import { fbSignInHandeler, forgatePasswordHandeler, githubSignInHandeler, googleSignInHandeler, logInWithEmailAndPassword, signUpWithEmailAndPassword, yahooSignInHandeler } from './LoginManager';
 import { useHistory, useLocation } from 'react-router-dom';
 
-
-
 const Login = () => {
     const [forgatePassword, setForgatePassword] = useState(false)
     const [error, setError] = useState({})
@@ -37,6 +35,7 @@ const Login = () => {
     }
 
     const handelResponse = (res) => {
+        // res.isLoggedIn = true ;
         setLoggedInUser(res)
         setUser(res)
 

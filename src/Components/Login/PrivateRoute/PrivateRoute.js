@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { UserContext } from '../../../App';
 
 import {
@@ -13,18 +13,12 @@ import {
 
 const PrivateRoute = ({ children, ...rest }) => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
-
-    // var retrievedObject = localStorage.getItem('response');
-    // const userData = JSON.parse(retrievedObject)    
-
-    const email = sessionStorage.getItem('email');
-    const name = sessionStorage.getItem('name');
-
+    
     return (
         <Route
             {...rest}
             render={({ location }) =>
-                name || email ? (
+              (loggedInUser.isLoggedIn || (JSON.parse(localStorage.getItem('response'))?.isLoggedIn))  ? (
                     children
                 ) : (
                         <Redirect
