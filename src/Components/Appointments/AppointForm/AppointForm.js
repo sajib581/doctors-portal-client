@@ -34,7 +34,7 @@ const AppointForm = ({ modalIsOpen, openModal, closeModal, appointmentTo, date }
     data.status = "Pending"
     data.Prescription = []
 
-    fetch('http://localhost:5000/addAppointments', {
+    fetch('https://ancient-sea-70147.herokuapp.com/addAppointments', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)

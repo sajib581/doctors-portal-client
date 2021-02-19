@@ -6,7 +6,7 @@ import emailjs from 'emailjs-com';
 const Contact = () => {
     const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit = (data, e) => {
-        fetch('http://localhost:5000/sendAnEmail',{
+        fetch('https://ancient-sea-70147.herokuapp.com/sendAnEmail',{
             method: 'POST',
             headers: { 'content-Type': 'application/json' },
             body: JSON.stringify(data)

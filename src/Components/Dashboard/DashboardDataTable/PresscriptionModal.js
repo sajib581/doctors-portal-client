@@ -34,7 +34,7 @@ const PresscriptionModal = ({ modalIsOpen, setIsOpen, modalData }) => {
 
     const submitHandeler = (data,e) => {
         Prescription.push(data)
-        fetch("http://localhost:5000/addPrescription", {
+        fetch("https://ancient-sea-70147.herokuapp.com/addPrescription", {
             method: "PATCH",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ data: Prescription, id: _id })

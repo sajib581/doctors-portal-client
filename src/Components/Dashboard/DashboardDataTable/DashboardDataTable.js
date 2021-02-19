@@ -11,7 +11,7 @@ const DashboardDataTable = () => {
     const [modalIsOpen, setIsOpen] = React.useState(false);
 
     const statusChangeHandeler = (newStatus, id) => {
-        fetch("http://localhost:5000/changeAppointmentStatus", {
+        fetch("https://ancient-sea-70147.herokuapp.com/changeAppointmentStatus", {
             method: 'PATCH',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ status: newStatus, id })

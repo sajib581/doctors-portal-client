@@ -27,7 +27,7 @@ const DoctorAppointments = () => {
     useEffect(() => {
         const email = sessionStorage.getItem("email")
     
-        fetch("http://localhost:5000/isDoctor", {
+        fetch("https://ancient-sea-70147.herokuapp.com/isDoctor", {
           method: "POST",
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: email })
@@ -47,7 +47,7 @@ const DoctorAppointments = () => {
     const email = sessionStorage.getItem("email")
     const name = sessionStorage.getItem("name")
     useEffect(() => {
-        fetch('http://localhost:5000/appointmentsByDate', {
+        fetch('https://ancient-sea-70147.herokuapp.com/appointmentsByDate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ date: selectedDate, email: email, name:name})

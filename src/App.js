@@ -26,7 +26,7 @@ function App() {
   useEffect(() => {
     const email = sessionStorage.getItem("email")
 
-    fetch("http://localhost:5000/isDoctor", {
+    fetch("https://ancient-sea-70147.herokuapp.com/isDoctor", {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email })
@@ -46,7 +46,7 @@ function App() {
   
 
   useEffect(() => {
-    fetch('http://localhost:5000/appointments')
+    fetch('https://ancient-sea-70147.herokuapp.com/appointments')
       .then(res => res.json())
       .then(data => setAppointments(data))
   }, [appointments])

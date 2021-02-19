@@ -16,7 +16,7 @@ const Doctors = () => {
     SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
     const [doctors, setDoctors] = useState([])
     useEffect(() => {
-        fetch("http://localhost:5000/doctors")
+        fetch("https://ancient-sea-70147.herokuapp.com/doctors")
             .then(response => response.json())
             .then(data => {
                 console.log(data.length);
