@@ -21,7 +21,7 @@ const Contact = () => {
             }
         })
         // Email can also send via email.js from client
-        // emailjs.sendForm('service_gjvn8ai', 'template_y9ht0ns', e.target, 'user_NGp1cmTccuY6C1xHRvO7J')
+        // emailjs.sendForm('service_id', 'template id', e.target, 'user_NGp1cmTccuY6C1xHRvO7J')
         //     .then((result) => {
         //         console.log(result.text);
         //     }, (error) => {

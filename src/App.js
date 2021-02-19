@@ -41,7 +41,6 @@ function App() {
     const userData = JSON.parse(localStorage.getItem('response'))  
     if (userData) {
       setLoggedInUser(userData)
-      console.log(userData);
     } 
   }, [loggedInUser?.isLoggedIn])
   
