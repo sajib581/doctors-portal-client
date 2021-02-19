@@ -24,7 +24,7 @@ const Doctors = () => {
             })
     }, [])
     return (
-        <div className='mb-5 carousel-container'>
+        <div className='mb-5 carousel-container' id="Doctors">
             <div>
                 <h3 className='text-center text-white mb-3 pb-4 pt-5'>Here are some of <span style={{ color: '#7AB259' }}> our Doctors</span></h3>
             </div>
