@@ -24,7 +24,7 @@ function App() {
   const [isDoctor, setIsDoctor] = useState(false)
 
   useEffect(() => {
-    const email = sessionStorage.getItem("email")
+    const email = localStorage.getItem("email")
 
     fetch("https://ancient-sea-70147.herokuapp.com/isDoctor", {
       method: "POST",

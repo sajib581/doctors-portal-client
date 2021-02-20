@@ -15,6 +15,8 @@ const Sidebar = () => {
     const logOutHandeler = () => {
         setLoggedInUser({isLoggedIn:false})
         localStorage.removeItem('response');
+        localStorage.removeItem('name');
+        localStorage.removeItem('email');
     }
     return (
         <div className="sidebar d-flex flex-column justify-content-between col-2 py-5 px-4" style={{ height: "100vh" }}>

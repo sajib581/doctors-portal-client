@@ -12,7 +12,7 @@ import 'swiper/components/scrollbar/scrollbar.scss';
 
 import 'swiper/swiper.scss';
 import './Doctors.css'
-const Doctors = () => {npm 
+const Doctors = () => {
     SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
     const [doctors, setDoctors] = useState([])
     useEffect(() => {

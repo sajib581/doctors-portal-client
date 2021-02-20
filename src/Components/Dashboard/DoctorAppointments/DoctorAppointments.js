@@ -25,7 +25,7 @@ const DoctorAppointments = () => {
     const [, , isDoctor, setIsDoctor] = useContext(AppointmentContext)
 
     useEffect(() => {
-        const email = sessionStorage.getItem("email")
+        const email = localStorage.getItem("email")
     
         fetch("https://ancient-sea-70147.herokuapp.com/isDoctor", {
           method: "POST",
@@ -44,8 +44,8 @@ const DoctorAppointments = () => {
         setSelectedDate(parsingDate);
     }
 
-    const email = sessionStorage.getItem("email")
-    const name = sessionStorage.getItem("name")
+    const email = localStorage.getItem("email")
+    const name = localStorage.getItem("name")
     useEffect(() => {
         fetch('https://ancient-sea-70147.herokuapp.com/appointmentsByDate', {
             method: 'POST',

@@ -41,8 +41,8 @@ const Login = () => {
 
         localStorage.setItem('response', JSON.stringify(res));
 
-        sessionStorage.setItem('name', res.name)
-        sessionStorage.setItem('email', res.email)
+        localStorage.setItem('name', res.name)
+        localStorage.setItem('email', res.email)
         history.replace(from);
 
     }
