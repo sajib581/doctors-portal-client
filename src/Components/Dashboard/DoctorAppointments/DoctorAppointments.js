@@ -39,18 +39,20 @@ const DoctorAppointments = () => {
       }, [])
 
     const handelChange = date => {
+        console.log("Hitted handelchange");
         const m = moment(date, moment.ISO_8601)
         const parsingDate = m.format("L")
         setSelectedDate(parsingDate);
     }
+    const email = JSON.parse(localStorage.getItem('response')).email
+    const name = JSON.parse(localStorage.getItem('response')).name
+    const uid = JSON.parse(localStorage.getItem('response')).uid
 
-    const email = localStorage.getItem("email")
-    const name = localStorage.getItem("name")
     useEffect(() => {
         fetch('https://ancient-sea-70147.herokuapp.com/appointmentsByDate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ date: selectedDate, email: email, name:name})
+            body: JSON.stringify({ date: selectedDate, email: email, name:name, uid:uid})
         })
             .then(res => res.json())
             .then(data => {

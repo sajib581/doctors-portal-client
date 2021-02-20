@@ -35,12 +35,13 @@ export const googleSignInHandeler = () => {
 export const fbSignInHandeler = () => {
     return firebase.auth().signInWithPopup(fbProvider)
         .then((result) => {
-            const { displayName, email, photoURL } = result.user
+            const { displayName, email, photoURL, uid } = result.user
             const signedInUser = {
                 isLoggedIn: true,
                 name: displayName,
                 email,
-                photo: photoURL
+                photo: photoURL,
+                uid: uid
             }
             return signedInUser
         })

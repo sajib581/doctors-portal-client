@@ -27,7 +27,6 @@ const AddDoctor = () => {
         })
             .then(response => response.json())
             .then(data => {
-                e.target.reset();
                 if(data){
                     e.target.reset();
                     alert("Doctor added Sucessfully")
