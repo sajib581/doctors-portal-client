@@ -33,8 +33,16 @@ const AppointForm = ({ modalIsOpen, openModal, closeModal, appointmentTo, date }
     data.created = new Date()
     data.status = "Pending"
     data.Prescription = []
-    data.uid = JSON.parse(localStorage.getItem('response')).uid || null
-
+    let user = JSON.parse(localStorage.getItem('response'))
+    console.log(user);
+    let uid ;
+    if (user) {
+      uid = user.uid
+    }
+    else {
+      uid = ""
+    }
+    data.uid = uid ;
     fetch('https://ancient-sea-70147.herokuapp.com/addAppointments', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
