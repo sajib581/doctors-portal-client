@@ -41,8 +41,6 @@ const PresscriptionModal = ({ modalIsOpen, setIsOpen, modalData }) => {
         })
             .then(res => res.json())
             .then(data => {
-                // document.getElementById("medicin").value=""
-                // document.getElementById("day").value="";
                 e.target.reset();
             })
             .catch(e=> alert("Error Occured"))

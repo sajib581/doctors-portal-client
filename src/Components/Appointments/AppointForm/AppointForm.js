@@ -24,7 +24,7 @@ const AppointForm = ({ modalIsOpen, openModal, closeModal, appointmentTo, date }
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = data => {
-    
+
     const m = moment(date, moment.ISO_8601)
     const parsingDate = m.format("L")
 
@@ -35,14 +35,14 @@ const AppointForm = ({ modalIsOpen, openModal, closeModal, appointmentTo, date }
     data.Prescription = []
     let user = JSON.parse(localStorage.getItem('response'))
     console.log(user);
-    let uid ;
+    let uid;
     if (user) {
       uid = user.uid
     }
     else {
       uid = ""
     }
-    data.uid = uid ;
+    data.uid = uid;
     fetch('https://ancient-sea-70147.herokuapp.com/addAppointments', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -107,6 +107,10 @@ const AppointForm = ({ modalIsOpen, openModal, closeModal, appointmentTo, date }
               <input ref={register({ required: true })} className="form-control" name="weight" placeholder="Weight" type="number" />
               {errors.weight && <span className="text-danger">This field is required</span>}
             </div>
+          </div>
+          <div className="form-group">
+            <textarea ref={register({ required: true })} className="form-control" name = "problems" placeholder="Write your problem in details" id="problems" rows="3"></textarea>
+            {errors.problems && <span className="text-danger">problems field is required</span>}
           </div>
 
           <div className="text-right">
