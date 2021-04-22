@@ -11,13 +11,13 @@ const infosData = [
     },
     {
         title: 'Visit Our Location',
-        description : 'Brookylin, NY 10003 USA',
+        description : 'Narayanganj 10003 Bangladesh',
         icon: faMapMarker ,
         background : 'dark'
     },
     {
         title: 'Call Us Now',
-        description : '+15862445425',
+        description : '+88 017111 4444',
         icon: faPhone,
         background : 'primary'
     }

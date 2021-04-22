@@ -1,32 +1,27 @@
-import React from 'react';
-import aliza from '../../../images/aliza.png'
-import wilson from '../../../images/wilson.png'
-import ema from '../../../images/ema.png'
+import React, { useState } from 'react';
 import Testimonial from '../Testimonial/Testimonial';
 import quotePic from '../../../images/quote.png'
 
-const testimonialData = [
-    {
-        quote: 'It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using ‘Content here, content ',
-        name: 'Wilson Harry',
-        from: 'California',
-        img: wilson
-    },
-    {
-        quote: 'It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using ‘Content here, content ',
-        name: 'Ema Gomez',
-        from: 'California',
-        img: ema
-    },
-    {
-        quote: 'It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using ‘Content here, content',
-        name: 'Aliza Farari',
-        from: 'California',
-        img: aliza
-    }
-]
+// Import Swiper styles
+import 'swiper/swiper.scss';
+import 'swiper/components/navigation/navigation.scss';
+import 'swiper/components/pagination/pagination.scss';
+import 'swiper/components/scrollbar/scrollbar.scss';
+import 'swiper/swiper.scss';
+
+// import Swiper from 'swiper';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 const Testimonials = () => {
+    SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
+    const [testimonialData, setTestimonialData] = useState([])
+
+    fetch('https://ancient-sea-70147.herokuapp.com/getAllReviews')
+        .then(response => response.json())
+        .then(data => {
+            setTestimonialData(data)
+        })
     return (
         <section id="Testimonial">
             <div className="d-flex justify-content-between mb-5">
@@ -38,12 +33,28 @@ const Testimonials = () => {
                     <img className="w-50" src={quotePic} alt="" />
                 </div>
             </div>
-            <div className="card-deck mx-5">
-                {
-                    testimonialData.map(data => <Testimonial key={data.name} data={data}></Testimonial>)
-                }
-            </div>
-        </section>
+            {/* <div className="card-deck mx-5"> */}
+                
+                <div className='carousel-slider'>
+                    <Swiper
+                        spaceBetween={10}
+                        slidesPerView={3}
+                        navigation
+                        autoplay={{
+                            delay: 2100,
+                            disableOnInteraction: false
+                        }}
+                        loop={true}
+                    >
+                        {
+                            testimonialData.map((data, index) => <SwiperSlide key={index}>
+                                <Testimonial key={data.name} data={data}></Testimonial>
+                            </SwiperSlide>)
+                        }
+                    </Swiper>
+                </div>
+            {/* </div> */}
+        </section>        
     );
 };
 

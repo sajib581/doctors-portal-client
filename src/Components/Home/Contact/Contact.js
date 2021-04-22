@@ -14,9 +14,11 @@ const Contact = () => {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
+                e.target.reset();
                 alert('We have received your message successfully')
             }
             else{
+                e.target.reset();
                 alert("Submission failed")
             }
         })
@@ -28,7 +30,7 @@ const Contact = () => {
         //         console.log(error.text);
         //     });
 
-        e.target.reset();
+        
         e.preventDefault();
     }
 

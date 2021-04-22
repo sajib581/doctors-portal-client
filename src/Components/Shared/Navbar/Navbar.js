@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom'
+import Ambulance from './Ambulance';
+import Modal from 'react-modal';
+import BloodDonarList from './BloodDonarList';
 
 const Navbar = () => {
   const location = useLocation();
@@ -12,6 +15,39 @@ const Navbar = () => {
   else {
     whiteText = ""
   }
+
+
+
+  Modal.setAppElement('#root')
+
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [bloodModalIsOpen, setbloodModalIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+  function openBloodModal() {
+    setbloodModalIsOpen(true);
+  }
+
+  function closeBloodModal() {
+    setbloodModalIsOpen(false);
+  }
+
+  const emergencyHandeler = (status) => {
+    console.log(status);
+    if(status === 'Ambulance'){
+      setIsOpen(true);
+    }
+    else if(status === 'Blood Donation'){
+      setbloodModalIsOpen(true)
+    }
+  }
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light">
@@ -22,6 +58,13 @@ const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ml-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <select onChange={(e) => emergencyHandeler(e.target.value)} className="btn btn-info" >
+                  <option disabled className="bg-white text-secondary">Select One</option>
+                  <option  className="bg-white text-secondary">Ambulance</option>
+                  <option  className="bg-white text-secondary">Blood Donation</option>
+                </select>
+              </li>
               <li className="nav-item">
                 <Link to="/" className="nav-link mr-4"> <span>Home</span></Link>
               </li>
@@ -49,8 +92,20 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
+        <Ambulance
+        modalIsOpen={modalIsOpen}
+        closeModal={closeModal}>
+      </Ambulance>
+      <BloodDonarList
+        modalIsOpen={bloodModalIsOpen}
+        closeModal={closeBloodModal}>
+      </BloodDonarList>
+
       </nav>
+      
+
     </div>
+
   );
 };
 

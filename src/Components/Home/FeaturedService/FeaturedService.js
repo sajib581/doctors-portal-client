@@ -12,7 +12,10 @@ const FeaturedService = () => {
                 <div className="col-md-7 d-flex align-items-center">
                     <div>
                         <h1>Exceptional Dental <br />Care, on Your Terms</h1>
-                        <p className="text-secondary my-4 pr-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam repellendus magni laudantium velit tempora. Facere quasi distinctio dolorem maiores voluptate saepe corrupti in delectus consequatur eum eligendi, fugit ducimus. Quidem tenetur quis, nisi pariatur animi ea. In, cum perferendis commodi expedita tenetur, possimus esse molestiae nihil at similique voluptatem necessitatibus.</p>
+                        <p className="text-secondary my-4 pr-5">Our Doctor	has	thirty	years’	experience	in	ophthalmic	surgery,	with	special	interest	in
+                        cataract	surgery,	corneal	transplantation,	and	laser	refractive	procedures.	He	is	a
+                        founding	member	of	Precision	LASIK	Group,	Chief	of	Ophthalmology	at	The	Hospital
+of	Central	Connecticut,	and	co-medical	director	of	the	Connecticut	eye	bank. </p>
                         <Link to="/appointment" className="btn btn-primary"> <span>Learn More</span></Link>
                     </div>
                 </div>

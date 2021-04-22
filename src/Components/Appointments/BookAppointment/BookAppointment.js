@@ -7,37 +7,37 @@ const BookAppointment = ({date}) => {
         {
             _id: '5e8df50be6e8231764dc23de',
             id: 1,
-            subject: 'Teeth Orthodontics',
+            subject: 'Cardiology & Heart Specialist',
             visitingHour: '8:00 AM - 9:00 AM',
-            totalSpace: 10
+            totalSpace: 8
         },
         {
             _id: '5e8df578e6e8231764dc23df',
             id: 2,
-            subject: 'Cosmetic Dentistry',
+            subject: 'Chest Medicine Specialist',
             visitingHour: '10:50 AM - 11:30 AM',
-            totalSpace: 10
+            totalSpace: 9
         },
         {
             _id: '5e8df5aee6e8231764dc23e0',
             id: 3,
-            subject: 'Teeth Cleaning',
+            subject: 'Child Pediatrics Specialist',
             visitingHour: '5:00 PM - 6:00 PM',
-            totalSpace: 10
+            totalSpace: 7
         },
         {
             _id: '5e8df63be6e8231764dc23e1',
             id: 4,
-            subject: 'Cavity Protection',
+            subject: 'Child Specialist',
             visitingHour: '7:00 AM - 8:30 AM',
             totalSpace: 10
         },
         {
             _id: '5e8df68de6e8231764dc23e2',
             id: 5,
-            subject: 'Teeth Orthodontics',
+            subject: 'Eye Specialist',
             visitingHour: '8:00 AM - 9:00 AM',
-            totalSpace: 10
+            totalSpace: 5
         },
         {
             _id: '5e8df6a0e6e8231764dc23e3',
