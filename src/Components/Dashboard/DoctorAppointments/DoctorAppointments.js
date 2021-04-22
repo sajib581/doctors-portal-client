@@ -12,7 +12,6 @@ const containerStyle = {
     height: "100vh"
 }
 const DoctorAppointments = () => {
-    const [loggedInUser, setLoggedInUser] = useContext( UserContext)
 
     const parsingDate = () => {
         const m = moment(new Date(), moment.ISO_8601)

@@ -1,10 +1,9 @@
 import React from 'react';
 import './Contact.css'
 import { useForm } from "react-hook-form";
-import emailjs from 'emailjs-com';
 
 const Contact = () => {
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit } = useForm();
     const onSubmit = (data, e) => {
         fetch('https://ancient-sea-70147.herokuapp.com/sendAnEmail',{
             method: 'POST',

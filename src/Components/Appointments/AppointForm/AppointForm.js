@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import { useForm } from "react-hook-form";
 import moment from 'moment';
@@ -20,7 +19,6 @@ const AppointForm = ({ modalIsOpen, openModal, closeModal, appointmentTo, date }
   };
   Modal.setAppElement('#root');
 
-  var subtitle;
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = data => {

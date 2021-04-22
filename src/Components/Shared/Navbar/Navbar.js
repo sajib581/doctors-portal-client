@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom'
@@ -9,7 +9,7 @@ import BloodDonarList from './BloodDonarList';
 const Navbar = () => {
   const location = useLocation();
   let whiteText;
-  if (location.pathname == '/') {
+  if (location.pathname === '/') {
     whiteText = "text-white"
   }
   else {
@@ -23,15 +23,8 @@ const Navbar = () => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [bloodModalIsOpen, setbloodModalIsOpen] = React.useState(false);
 
-  function openModal() {
-    setIsOpen(true);
-  }
-
   function closeModal() {
     setIsOpen(false);
-  }
-  function openBloodModal() {
-    setbloodModalIsOpen(true);
   }
 
   function closeBloodModal() {

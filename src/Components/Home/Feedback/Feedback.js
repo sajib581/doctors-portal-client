@@ -25,7 +25,7 @@ const Feedback = () => {
             e.target.reset()
         }
     }
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit,  errors } = useForm();
     
     return (
         <section className="mt-5 py-5" style={{ backgroundColor: '#FBD062' }}>

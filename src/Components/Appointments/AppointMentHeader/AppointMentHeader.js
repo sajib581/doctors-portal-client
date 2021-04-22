@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import chair from '../../../images/chair.png'
+import React from 'react';
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 

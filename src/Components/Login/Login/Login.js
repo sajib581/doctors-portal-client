@@ -80,29 +80,14 @@ const Login = () => {
         let isFieldValid = true
         if (e.target.name === 'name') {
             isFieldValid = e.target.value.length > 3
-            // if (isFieldValid) {
-            //     showError("name", "")
-            // } else {
-            //     showError("name", "Name Must Be More Than 4 Letters")
-            // }
         }
         if (e.target.name === 'email') {
             isFieldValid = /\S+@\S+\.\S+/.test(e.target.value)
-            // if (isFieldValid) {
-            //     showError("email", "")
-            // } else {
-            //     showError("email", "Please Give Valid Email")
-            // }
         }
         if (e.target.name === 'password') {
-            const passwordLength = e.target.value.length > 6
-            const passwordHasNumber = /\d{1}/.test(e.target.value)
-            isFieldValid = passwordHasNumber && passwordLength
-            if (isFieldValid) {
-                showError("password", "")
-            } else {
-                showError("password", "Password Min 6 character and a number ")
-            }
+            console.log("Hitted PAssword");
+            console.log(e.target.value);
+            isFieldValid = e.target.value.length > 3
         }
         if (isFieldValid) {
             const newUserInfo = { ...user }
@@ -112,18 +97,29 @@ const Login = () => {
     }
 
     const submitHandeler = (e) => {
+        console.log(newUser, user.email, user.password, user.name);
         if (newUser && user.email && user.password && user.name) {
+            console.log("Signup hitted");
             signUpWithEmailAndPassword(user.email, user.password, user.name)
                 .then(res => {
+                    console.log("Signup Success");
                     setLoggedInUser(res)
                     setUser(res)
                     setNewUser(false)
+                    alert('User Created Successfully. Now please Log In')
+                })
+                .catch(err => {
+                    console.log("Signup Error Occured");
                 })
 
         }
         else if (!newUser && user.email && user.password && !forgatePassword) {
             logInWithEmailAndPassword(user.email, user.password)
                 .then(res => {
+                    localStorage.setItem('response', JSON.stringify(res));
+                    localStorage.setItem('name', res.name)
+                    localStorage.setItem('email', res.email)
+
                     setLoggedInUser(res)
                     setUser(res)
                     history.replace(from);
@@ -191,7 +187,7 @@ const Login = () => {
                             <img onClick={handelFbSignIn} style={{ width: '50px', cursor: "pointer" }} src="https://hrcdn.net/community-frontend/assets/facebook-colored-af4249157d.svg" alt="" />
                             <img onClick={handelGoogleSignIn} style={{ width: '50px', cursor: "pointer" }} src="https://hrcdn.net/community-frontend/assets/google-colored-20b8216731.svg" alt="" />
                             <img onClick={handelGithubSignIn} style={{ width: '50px', cursor: "pointer" }} src="https://hrcdn.net/community-frontend/assets/github-colored-1db995054b.svg" alt="" />
-                            <img onClick={handelYahooSignIn} style={{ width: '80px', cursor: "pointer" }} src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Yahoo%21_icon.svg/1200px-Yahoo%21_icon.svg.png" alt="" />
+                            {/* <img onClick={handelYahooSignIn} style={{ width: '80px', cursor: "pointer" }} src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Yahoo%21_icon.svg/1200px-Yahoo%21_icon.svg.png" alt="" /> */}
 
                         </div>
                     </form>

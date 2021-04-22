@@ -2,7 +2,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebase.config';
 
-const googleProvider = new firebase.auth.GoogleAuthProvider();
+
 const fbProvider = new firebase.auth.FacebookAuthProvider();
 const githubProvider = new firebase.auth.GithubAuthProvider();
 const yahooProvider = new firebase.auth.OAuthProvider('yahoo.com');
@@ -12,18 +12,17 @@ if (firebase.apps.length === 0) {
 }
 
 export const googleSignInHandeler = () => {
+    const googleProvider = new firebase.auth.GoogleAuthProvider();
     return firebase.auth().signInWithPopup(googleProvider)
         .then((result) => {
             const { displayName, email, photoURL } = result.user
             const signedInUser = {
                 isLoggedIn: true,
                 name: displayName,
-                email,
+                email: email,
                 photo: photoURL
             }
             return signedInUser
-
-
         }).catch((error) => {
             const newUserInfo = {}
             newUserInfo.error = error.message;
@@ -58,15 +57,20 @@ export const githubSignInHandeler = () => {
         .auth()
         .signInWithPopup(githubProvider)
         .then((result) => {
-            var user = result.user;
-            user.isLoggedIn = true;
-            console.log("github success");
-            return user
+            const { displayName, email, photoURL } = result.user
+            const signedInUser = {
+                isLoggedIn: true,
+                name: displayName,
+                email: email,
+                photo: photoURL
+            }
+            return signedInUser
             
         }).catch((error) => {
             const newUserInfo = {}
             newUserInfo.error = error.message;
             newUserInfo.success = false;
+            alert(newUserInfo.error)
             console.log("github failed");
             return newUserInfo
         });

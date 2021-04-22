@@ -19,7 +19,6 @@ const Doctors = () => {
         fetch("https://ancient-sea-70147.herokuapp.com/doctors")
             .then(response => response.json())
             .then(data => {
-                console.log(data.length);
                 setDoctors(data)
             })
     }, [])

@@ -1,6 +1,4 @@
 import React from 'react';
-import fluride from '../../../images//fluride.png'
-import cavity from '../../../images/cavity.png'
 import whitening from '../../../images/whitening.png'
 import SErviceDetails from '../SErviceDetails/SErviceDetails';
 
