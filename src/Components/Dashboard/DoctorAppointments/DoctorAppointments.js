@@ -63,7 +63,7 @@ const DoctorAppointments = () => {
                 <div className="col-md-2">
                     <Sidebar></Sidebar>
                 </div>
-                <div className="col-md-5 ">
+                <div className="col-md-4 ">
                     <div className="ml-4">
                         <h3 className="my-4">Appointments</h3>
                         <Calendar
@@ -72,7 +72,7 @@ const DoctorAppointments = () => {
                         />
                     </div>
                 </div>
-                <div className="col-md-5 pt-4">
+                <div className="col-md-6 pt-4">
                     <AppointmentsByDate 
                     appointments={appointments}
                     date = {selectedDate}

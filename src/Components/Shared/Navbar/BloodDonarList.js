@@ -7,84 +7,84 @@ const BloodDonarList = ({ modalIsOpen, closeModal }) => {
             name: "Rasel",
             group: "AB-",
             location: "Chasara",
-            age: "22",
+            phone: "+88 01485636656",
             _id: "1"
         },
         {
             name: "Rajib",
             group: "B-",
             location: "Kalir BAzar",
-            age: "45",
+            phone: "+88 0156966656",
             _id: "2"
         },
         {
             name: "Samim",
             group: "A+",
             location: "Kalir BAzar",
-            age: "44",
+            phone: "+88 014856655656",
             _id: "3"
         },
         {
             name: "Jibon",
             group: "AB-",
             location: "Chasara",
-            age: "35",
+            phone: "+88 0178011225",
             _id: "4"
         },
         {
             name: "Akash",
             group: "AB-",
             location: "Jalkuri",
-            age: "23",
+            phone: "+88 01788836656",
             _id: "5"
         },
         {
             name: "Malek",
             group: "B-",
             location: "jalkuri",
-            age: "41",
+            phone: "+88 0178011225",
             _id: "6"
         },
         {
             name: "Srabon",
             group: "B+",
             location: "Nitaiganj",
-            age: "32",
+            phone: "+88 01485111223",
             _id: "7"
         },
         {
             name: "Nisad",
             group: "AB+",
             location: "Majdair",
-            age: "25",
+            phone: "+88 01485638888",
             _id: "8"
         },
         {
             name: "Kazi Maruf",
             group: "AB+",
             location: "Bondor",
-            age: "25",
+            phone: "+88 0188888226",
             _id: "9"
         },
         {
             name: "Tomal",
             group: "A-",
             location: "Tolla",
-            age: "18",
+            phone: "+88 0178011225",
             _id: "10"
         },
         {
             name: "Gisan",
             group: "A-",
             location: "Chasara",
-            age: "45",
+            phone: "+88 0178011225",
             _id: "11"
         },
         {
             name: "Recent",
             group: "A+",
             location: "Dewvog",
-            age: "20",
+            phone: "+88 0178011225",
             _id: "12"
         },
         
@@ -121,7 +121,7 @@ const BloodDonarList = ({ modalIsOpen, closeModal }) => {
                             <th scope="col">Name</th>
                             <th scope="col">Blood Group</th>
                             <th scope="col">Location</th>
-                            <th scope="col">Age</th>
+                            <th scope="col">Phone</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -130,8 +130,8 @@ const BloodDonarList = ({ modalIsOpen, closeModal }) => {
                                 <td>{index+1}</td>
                                 <td>{item.name}</td>
                                 <td>{item.group}</td>
-                                <td>{item.age}</td>
-                                <td>{item.location} </td>
+                                <td>{item.location}</td>
+                                <td>{item.phone} </td>
                             </tr> )
                         }
                     </tbody>

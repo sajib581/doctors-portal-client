@@ -41,7 +41,7 @@ const Ambulance = ({ modalIsOpen, closeModal }) => {
         },
         {
             h_name : "Modern General Hospital",
-            phone: "++88 01485636656",
+            phone: "+88 01485636656",
             time : "50"
         },
         {
