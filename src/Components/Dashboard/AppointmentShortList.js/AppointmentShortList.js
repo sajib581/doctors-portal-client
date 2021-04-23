@@ -19,7 +19,6 @@ const AppointmentShortList = ({ appointments }) => {
             <thead>
                 <tr>
                     <th className="text-secondary" scope="col">Name</th>
-                    <th className="text-secondary" scope="col">Phone</th>
                     <th className="text-secondary" scope="col">Email</th>
                     <th className="text-secondary" scope="col">Status</th>
                     <th className="text-secondary" scope="col">Prescription</th>
@@ -31,9 +30,8 @@ const AppointmentShortList = ({ appointments }) => {
 
                         <tr key={index}>
                             <td>{appointment.name}</td>
-                            <td>{appointment.phone}</td>
                             <td>{appointment.email}</td>
-                            <td><button className={`btn btn-primary`} >{appointment.status}</button></td>
+                            <td><button className={appointment.status === "Approved"?`btn btn-success` : appointment.status === "Rejected"? "btn btn-danger px-3" : "btn btn-primary px-3"} >{appointment.status}</button></td>
                             <td onClick={()=> viewHandeler(appointment.Prescription)}><button className="btn btn-secondary">view</button> </td>
                         </tr>
                     )

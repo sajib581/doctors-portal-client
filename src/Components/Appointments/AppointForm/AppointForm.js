@@ -49,8 +49,8 @@ const AppointForm = ({ modalIsOpen, openModal, closeModal, appointmentTo, date }
       .then(res => res.json())
       .then(success => {
         if (success) {
-          closeModal()
           alert('Appointment Created Successfully');
+          closeModal()          
         }
       })
   }
