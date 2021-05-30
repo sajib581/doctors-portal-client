@@ -1,10 +1,10 @@
 import React from 'react';
-import './Contact.css'
 import { useForm } from "react-hook-form";
+import './Contact.css';
 
 const Contact = () => {
     const { register, handleSubmit } = useForm();
-    const onSubmit = (data, e) => {
+    const onSubmit = (data, e) => {   //https://ancient-sea-70147.herokuapp.com
         fetch('https://ancient-sea-70147.herokuapp.com/sendAnEmail',{
             method: 'POST',
             headers: { 'content-Type': 'application/json' },
@@ -18,6 +18,8 @@ const Contact = () => {
             }
             else{
                 e.target.reset();
+                
+                console.log(data.err)
                 alert("Submission failed")
             }
         })

@@ -1,15 +1,15 @@
 .header-container {
-    height:800px;
-    background-image: url('../../../images/chair-bg.png');
-    background-size: cover;
+  height: 800px;
+  background-image: url("../../../images/chair-bg.png");
+  background-size: cover;
 }
 .header-container::after {
-    height:700px;
-    content:''; 
-    position: absolute;  
-    top: 0; 
-    width: 30%;
-    right: 0;
-    background-color: #3A4256 ;
-    z-index: -1;
+  height: 700px;
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 26%;
+  right: 0;
+  background-color: #3a4256;
+  z-index: -1;
 }
