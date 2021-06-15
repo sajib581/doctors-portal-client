@@ -1,6 +1,6 @@
+import { faClock, faMapMarker, faPhone } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import InfoCard from '../InfoCard/InfoCard';
-import { faMapMarker, faClock, faPhone } from '@fortawesome/free-solid-svg-icons'
 
 const infosData = [
     {
@@ -24,12 +24,12 @@ const infosData = [
     
 ]
 const BusinessInfo = () => {
-
+   
     return (
         <section className="d-flex justify-content-center">
             <div className="row w-75">
             {
-                infosData.map((info, index) => <InfoCard key={index} info={info}></InfoCard>)
+                infosData.map((info, index) => <InfoCard  key={index} info={info}></InfoCard>)
             }
         </div>
         </section>
