@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import Testimonial from '../Testimonial/Testimonial';
-import quotePic from '../../../images/quote.png'
-
-// Import Swiper styles
-import 'swiper/swiper.scss';
+// import Swiper from 'swiper';
+import SwiperCore, { A11y, Autoplay, Navigation, Pagination, Scrollbar } from 'swiper';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
-import 'swiper/swiper.scss';
-
-// import Swiper from 'swiper';
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+// Import Swiper styles
+import 'swiper/swiper.scss';
+import quotePic from '../../../images/quote.png';
+import Testimonial from '../Testimonial/Testimonial';
+
+
 
 const Testimonials = () => {
     SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);

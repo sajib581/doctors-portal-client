@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
-import loginBg from '../../../images/login-bg.png'
-import './Login.css'
-
-import { UserContext } from '../../../App';
-import { fbSignInHandeler, forgatePasswordHandeler, githubSignInHandeler, googleSignInHandeler, logInWithEmailAndPassword, signUpWithEmailAndPassword, yahooSignInHandeler } from './LoginManager';
 import { useHistory, useLocation } from 'react-router-dom';
+import { UserContext } from '../../../App';
+import loginBg from '../../../images/login-bg.png';
+import './Login.css';
+import { fbSignInHandeler, forgatePasswordHandeler, githubSignInHandeler, googleSignInHandeler, logInWithEmailAndPassword, signUpWithEmailAndPassword, yahooSignInHandeler } from './LoginManager';
+
 
 const Login = () => {
     const [forgatePassword, setForgatePassword] = useState(false)
@@ -38,7 +38,7 @@ const Login = () => {
         // res.isLoggedIn = true ;
         setLoggedInUser(res)
         setUser(res)
-
+        console.log(res);
         localStorage.setItem('response', JSON.stringify(res));
 
         localStorage.setItem('name', res.name)

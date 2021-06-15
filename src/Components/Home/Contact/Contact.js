@@ -1,39 +1,15 @@
+import { ValidationError } from '@formspree/react';
 import React from 'react';
 import { useForm } from "react-hook-form";
 import './Contact.css';
 
 const Contact = () => {
-    const { register, handleSubmit } = useForm();
-    const onSubmit = (data, e) => {   //https://ancient-sea-70147.herokuapp.com
-        fetch('https://ancient-sea-70147.herokuapp.com/sendAnEmail',{
-            method: 'POST',
-            headers: { 'content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                e.target.reset();
-                alert('We have received your message successfully')
-            }
-            else{
-                e.target.reset();
-                
-                console.log(data.err)
-                alert("Submission failed")
-            }
-        })
-        // Email can also send via email.js from client
-        // emailjs.sendForm('service_id', 'template id', e.target, 'user_NGp1cmTccuY6C1xHRvO7J')
-        //     .then((result) => {
-        //         console.log(result.text);
-        //     }, (error) => {
-        //         console.log(error.text);
-        //     });
+    const [state, handleSubmit] = useForm("xpzkdnez");
+  if (state.succeeded) {
+      return <p>Thanks for joining!</p>;
+  }
 
-        
-        e.preventDefault();
-    }
+   
 
 
     return (
@@ -41,18 +17,34 @@ const Contact = () => {
             <h5 className="text-center text-primary mt-5 pt-5 text-uppercase">Contact us</h5>
             <h2 className="text-center text-white">Always Connect With US</h2>
             <div className="col-md-9 mx-auto">
-                <form onSubmit={handleSubmit(onSubmit)} className="mt-5">
+                {/* Start */}
+                <form onSubmit={handleSubmit} className="mt-5">
                     <div className="form-group mx-auto w-50">
-                        <input type="email" name="email" className="form-control" ref={register({ required: true })} id="exampleFormControlInput1" placeholder="email" />
+                        <input type="email" id="email" name="Email" className="form-control" placeholder="email" />
+                        <ValidationError 
+                            prefix="Email" 
+                            field="email"
+                            errors={state.errors}
+                        />
                     </div>
                     <div className="form-group mx-auto w-50">
-                        <input type="text" name="subject" className="form-control" ref={register({ required: true })} placeholder="Subject" />
+                        <input type="text" id="subject" name="Subject" className="form-control" placeholder="Subject" />
+                        <ValidationError 
+                                prefix="Subject" 
+                                field="subject"
+                                errors={state.errors}
+                            />
                     </div>
                     <div className="form-group mx-auto w-50">
-                        <textarea placeholder="text-message" name="message" className="form-control" ref={register({ required: true })} id="exampleFormControlTextarea1" rows="5"></textarea>
+                        <textarea placeholder="text-message" id="message" name="Message" className="form-control"  rows="5"></textarea>
+                        <ValidationError 
+                                prefix="Message" 
+                                field="message"
+                                errors={state.errors}
+                            />
                     </div>
                     <div className="form-group pb-5 mx-auto text-center">
-                        <input type="submit" className="btn btn-primary mx-auto" value="Submit" />
+                        <input type="submit" className="btn btn-primary mx-auto" disabled={state.submitting} value="Submit" />
                     </div>
                 </form>
             </div>

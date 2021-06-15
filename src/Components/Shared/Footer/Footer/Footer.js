@@ -1,8 +1,8 @@
-import React from 'react';
-import '../FooterCol/FooterCol.css';
-import FooterCol from '../FooterCol/FooterCol';
+import { faFacebookF, faGooglePlusG, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faInstagram, faGooglePlusG } from '@fortawesome/free-brands-svg-icons';
+import React from 'react';
+import FooterCol from '../FooterCol/FooterCol';
+import '../FooterCol/FooterCol.css';
 
 const Footer = () => {
     const noNamed = [
@@ -13,7 +13,7 @@ const Footer = () => {
         {name: "Check Up" , link: "/checkup"}
     ]
     const ourAddress = [
-        {name: "New York - 101010 Hudson" , link: "//google.com/map"},
+        {name: "Dhaka - 101010 Mohakhali" , link: "//google.com/map"},
         {name: "Yards" , link: "//google.com/map"}
        
     ]
@@ -51,7 +51,7 @@ const Footer = () => {
                         </ul>
                         <div className="mt-5">
                             <h6>Call now</h6>
-                            <button className="btn btn-primary">+2025550295</button>
+                            <button className="btn btn-primary">+88 25550295</button>
                         </div>
                     </FooterCol>
                 </div>
