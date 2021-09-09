@@ -129,7 +129,7 @@ const Login = () => {
             forgatePasswordHandeler(user.email)
         }
         else {
-            alert("Just Click input forms and try again")
+            alert("Just Click Both of Input Forms and Try Sign in again")
         }
         e.preventDefault();
     }
