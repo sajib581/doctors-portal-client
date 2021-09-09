@@ -129,7 +129,7 @@ const Login = () => {
             forgatePasswordHandeler(user.email)
         }
         else {
-            // showError("result","Invalid Credential")
+            alert("Just Click input forms and try again")
         }
         e.preventDefault();
     }
